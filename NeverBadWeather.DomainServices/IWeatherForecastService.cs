@@ -7,6 +7,7 @@ namespace NeverBadWeather.DomainServices
 {
     public interface IWeatherForecastService
     {
-        WeatherForecast GetWeatherForecast(Location location);
+        WeatherForecast GetWeatherForecast(Place place);
+        Place GetWeatherForecast(Location location);
     }
 }
