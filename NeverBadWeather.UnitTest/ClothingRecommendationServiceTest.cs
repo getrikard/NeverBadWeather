@@ -42,8 +42,7 @@ namespace NeverBadWeather.UnitTest
                 .Returns(new Place());
             mockWeatherForecast.Setup(m=>m.GetWeatherForecast(It.IsAny<Place>()))
                 .Returns(new WeatherForecast(15));
-                
-
+            
             // act
             var service = new ClothingRecommendationService(
                 mockWeatherForecast.Object,
