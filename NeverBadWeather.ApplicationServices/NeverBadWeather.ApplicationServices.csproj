@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NeverBadWeather.DomainModel\NeverBadWeather.DomainModel.csproj" />
+    <ProjectReference Include="..\NeverBadWeather.DomainServices\NeverBadWeather.DomainServices.csproj" />
+  </ItemGroup>
+
 </Project>

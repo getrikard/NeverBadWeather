@@ -18,5 +18,10 @@ namespace NeverBadWeather.DomainModel
             City = city;
             Name = name;
         }
+
+        public Place()
+        {
+            
+        }
     }
 }

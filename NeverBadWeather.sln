@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6E7FA01F-8C1D-48E8-8844-C9E7B56CCEA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeather.DomainModel", "NeverBadWeather.DomainModel\NeverBadWeather.DomainModel.csproj", "{D32F1124-FC44-425E-A090-FB799FD602AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeverBadWeather.DomainModel", "NeverBadWeather.DomainModel\NeverBadWeather.DomainModel.csproj", "{D32F1124-FC44-425E-A090-FB799FD602AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{AB908003-B1FE-4035-983B-C11DE2786198}"
 EndProject
@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{D6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{00D86BC1-9EDF-4861-8326-EF199E54D6D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeather.DomainServices", "NeverBadWeather.DomainServices\NeverBadWeather.DomainServices.csproj", "{0CBF229F-FFFF-4520-B19D-29553C376A78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeverBadWeather.DomainServices", "NeverBadWeather.DomainServices\NeverBadWeather.DomainServices.csproj", "{0CBF229F-FFFF-4520-B19D-29553C376A78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeather.ApplicationServices", "NeverBadWeather.ApplicationServices\NeverBadWeather.ApplicationServices.csproj", "{360ACF95-6018-4313-A007-08E91526350A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeverBadWeather.ApplicationServices", "NeverBadWeather.ApplicationServices\NeverBadWeather.ApplicationServices.csproj", "{360ACF95-6018-4313-A007-08E91526350A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeatcher.UserInterfaceConsole", "NeverBadWeatcher.UserInterfaceConsole\NeverBadWeatcher.UserInterfaceConsole.csproj", "{000011C3-E7F2-48C6-A2E5-FFEF28198CCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeverBadWeatcher.UserInterfaceConsole", "NeverBadWeatcher.UserInterfaceConsole\NeverBadWeatcher.UserInterfaceConsole.csproj", "{000011C3-E7F2-48C6-A2E5-FFEF28198CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeather.Infrastructure.WeatherForecastService", "NeverBadWeather.Infrastructure.WeatherForecastService\NeverBadWeather.Infrastructure.WeatherForecastService.csproj", "{D1B9752A-C7BD-4012-8D18-7A38AC96C920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeverBadWeather.Infrastructure.WeatherForecastService", "NeverBadWeather.Infrastructure.WeatherForecastService\NeverBadWeather.Infrastructure.WeatherForecastService.csproj", "{D1B9752A-C7BD-4012-8D18-7A38AC96C920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeverBadWeather.UnitTest", "NeverBadWeather.UnitTest\NeverBadWeather.UnitTest.csproj", "{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{D1B9752A-C7BD-4012-8D18-7A38AC96C920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1B9752A-C7BD-4012-8D18-7A38AC96C920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1B9752A-C7BD-4012-8D18-7A38AC96C920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{360ACF95-6018-4313-A007-08E91526350A} = {6E7FA01F-8C1D-48E8-8844-C9E7B56CCEA0}
 		{000011C3-E7F2-48C6-A2E5-FFEF28198CCD} = {00D86BC1-9EDF-4861-8326-EF199E54D6D1}
 		{D1B9752A-C7BD-4012-8D18-7A38AC96C920} = {AB908003-B1FE-4035-983B-C11DE2786198}
+		{F3DD752E-EAAE-4D34-9C55-76A2B2A8E6DD} = {D6449DE2-F2B0-4D20-AE04-A8DD9CCFFC24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE0BDAD9-8B8B-4F05-B1DE-0FA352C6BC91}
