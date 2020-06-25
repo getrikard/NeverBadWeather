@@ -13,7 +13,7 @@ namespace NeverBadWeather.Infrastructure.WeatherForecastService
             throw new NotImplementedException();
         }
 
-        public Place GetWeatherForecast(Location location)
+        public Place GetPlace(Location location)
         {
             throw new NotImplementedException();
         }
