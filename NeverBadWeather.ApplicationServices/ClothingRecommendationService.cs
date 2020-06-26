@@ -20,20 +20,20 @@ namespace NeverBadWeather.ApplicationServices
             _weatherForecastService = weatherForecastService;
         }
 
-        public Clothing GetClothingRecommendation(User user, Location location)
-        {
-            var rules = _clothingRuleRepository.GetRules(user);
-            if (rules == null || !rules.Any()) return null;
-            var place = _weatherForecastService.GetPlace(location);
-            var weatherForecast = _weatherForecastService.GetWeatherForecast(place);
-            foreach (var rule in rules)
-            {
-                if(rule.Match(weatherForecast.Temperature))
-                {
-                    return rule.Clothing;
-                }
-            }
-            return rules.First().Clothing;
-        }
+        //public Clothing GetClothingRecommendation(User user, Location location)
+        //{
+        //    var rules = _clothingRuleRepository.GetRules(user);
+        //    if (rules == null || !rules.Any()) return null;
+        //    var place = _weatherForecastService.GetPlace(location);
+        //    var weatherForecast = _weatherForecastService.GetWeatherForecast(place);
+        //    foreach (var rule in rules)
+        //    {
+        //        if(rule.Match(weatherForecast.Temperature))
+        //        {
+        //            return rule.Clothing;
+        //        }
+        //    }
+        //    return rules.First().Clothing;
+        //}
     }
 }

@@ -1,28 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 using NeverBadWeather.DomainModel;
 using NeverBadWeather.DomainServices;
+using NeverBadWeather.Infrastructure.WeatherForecastService.Model;
 using NeverBadWeather.Infrastructure.WeatherForecastService.Properties;
 
 namespace NeverBadWeather.Infrastructure.WeatherForecastService
 {
     public class WeatherForecastServiceYr : IWeatherForecastService
     {
-        static WeatherForecastServiceYr()
-        {
 
+        public async Task<WeatherForecast> GetWeatherForecast(Place place)
+        {
+            var url = $"http://www.yr.no/sted/"
+                      + place.Country + "/"
+                      + place.Region + "/"
+                      + place.City + "/"
+                      + place.Name + "/varsel.xml";
+            using var wc = new WebClient();
+            var xml = await wc.DownloadStringTaskAsync(new Uri(url));
+            var xmlSerializer = new XmlSerializer(typeof(Weatherdata));
+            using var reader = new StringReader(xml);
+            var weatherData = (Weatherdata)xmlSerializer.Deserialize(reader);
+
+            var forecasts = weatherData.forecast.tabular.Select(TemperatureForecastFromXml);
+            return new WeatherForecast(forecasts);
         }
 
-        public WeatherForecast GetWeatherForecast(Place place)
+        private static TemperatureForecast TemperatureForecastFromXml(weatherdataForecastTime data)
         {
-            throw new NotImplementedException();
-        }
-
-        public Place GetPlace(Location location)
-        {
-            throw new NotImplementedException();
+            var temperature = data.temperature.value;
+            return new TemperatureForecast(temperature, data.from, data.to);
         }
 
         public IEnumerable<Place> GetAllPlaces()

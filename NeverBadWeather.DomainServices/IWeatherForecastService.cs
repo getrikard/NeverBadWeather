@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using NeverBadWeather.DomainModel;
 
 namespace NeverBadWeather.DomainServices
 {
     public interface IWeatherForecastService
     {
-        WeatherForecast GetWeatherForecast(Place place);
-        Place GetPlace(Location location);
-
+        Task<WeatherForecast> GetWeatherForecast(Place place);
         IEnumerable<Place> GetAllPlaces();
     }
 }

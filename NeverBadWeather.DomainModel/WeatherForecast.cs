@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NeverBadWeather.DomainModel
 {
     public class WeatherForecast
     {
-        public int Temperature { get; }
+        public TemperatureForecast[] Temperatures { get; }
 
-        public WeatherForecast(int temperature)
+        public WeatherForecast(IEnumerable<TemperatureForecast> temperatures)
         {
-            Temperature = temperature;
+            Temperatures = temperatures.ToArray();
         }
     }
 }
