@@ -18,7 +18,8 @@ namespace NeverBadWeather.UnitTest
             var service = new ClothingRecommendationService(
                 mockWeatherForecast.Object, 
                 mockClothingRule.Object);
-            var recommendation = service.GetClothingRecommendation(new User(), new Location());
+            var location = new Location(1,2);
+            var recommendation = service.GetClothingRecommendation(new User(), location);
 
             Assert.IsNull(recommendation);
         }
@@ -47,7 +48,7 @@ namespace NeverBadWeather.UnitTest
             var service = new ClothingRecommendationService(
                 mockWeatherForecast.Object,
                 mockClothingRule.Object);
-            var recommendation = service.GetClothingRecommendation(new User(), new Location());
+            var recommendation = service.GetClothingRecommendation(new User(), new Location(0,0));
 
             // assert
             Assert.AreEqual("Shorts og t-skjorte", recommendation.Description);

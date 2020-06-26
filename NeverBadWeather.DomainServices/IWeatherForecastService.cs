@@ -9,5 +9,7 @@ namespace NeverBadWeather.DomainServices
     {
         WeatherForecast GetWeatherForecast(Place place);
         Place GetPlace(Location location);
+
+        IEnumerable<Place> GetAllPlaces();
     }
 }
