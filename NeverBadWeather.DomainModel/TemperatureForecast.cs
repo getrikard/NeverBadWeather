@@ -16,5 +16,10 @@ namespace NeverBadWeather.DomainModel
             FromTime = fromTime;
             ToTime = time;
         }
+
+        public override string ToString()
+        {
+            return $"{Temperature}°C fra {FromTime:t} til {ToTime:t}";
+        }
     }
 }

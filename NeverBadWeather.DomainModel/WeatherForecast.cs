@@ -13,5 +13,10 @@ namespace NeverBadWeather.DomainModel
         {
             Temperatures = temperatures.ToArray();
         }
+
+        public override string ToString()
+        {
+            return string.Join(Environment.NewLine, Temperatures.Select(t => t.ToString()));
+        }
     }
 }

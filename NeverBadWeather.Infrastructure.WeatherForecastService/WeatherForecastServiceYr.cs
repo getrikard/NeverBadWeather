@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using NeverBadWeather.DomainModel;
+using NeverBadWeather.DomainModel.Exception;
 using NeverBadWeather.DomainServices;
 using NeverBadWeather.Infrastructure.WeatherForecastService.Model;
 using NeverBadWeather.Infrastructure.WeatherForecastService.Properties;
@@ -25,12 +26,19 @@ namespace NeverBadWeather.Infrastructure.WeatherForecastService
                       + place.Name + "/varsel.xml";
             using var wc = new WebClient();
             var xml = await wc.DownloadStringTaskAsync(new Uri(url));
-            var xmlSerializer = new XmlSerializer(typeof(Weatherdata));
-            using var reader = new StringReader(xml);
-            var weatherData = (Weatherdata)xmlSerializer.Deserialize(reader);
+            try
+            {
+                var xmlSerializer = new XmlSerializer(typeof(weatherdata));
+                using var reader = new StringReader(xml);
+                var weatherData = (weatherdata) xmlSerializer.Deserialize(reader);
 
-            var forecasts = weatherData.forecast.tabular.Select(TemperatureForecastFromXml);
-            return new WeatherForecast(forecasts);
+                var forecasts = weatherData.forecast.tabular.Select(TemperatureForecastFromXml);
+                return new WeatherForecast(forecasts);
+            }
+            catch (Exception e)
+            {
+                throw new CouldNotFetchWeatherForecastException(e);
+            }
         }
 
         private static TemperatureForecast TemperatureForecastFromXml(weatherdataForecastTime data)

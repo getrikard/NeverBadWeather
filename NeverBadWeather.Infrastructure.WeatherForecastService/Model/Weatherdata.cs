@@ -11,7 +11,7 @@ namespace NeverBadWeather.Infrastructure.WeatherForecastService.Model
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class Weatherdata
+    public partial class weatherdata
     {
 
         private weatherdataLocation locationField;
