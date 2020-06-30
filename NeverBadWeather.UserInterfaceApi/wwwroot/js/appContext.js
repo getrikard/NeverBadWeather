@@ -1,6 +1,15 @@
 ﻿const appContext = {
     model: {
         page: 'main',
+        time: (function() {
+            const now = new Date();
+            const hours = now.getHours();
+            return {
+                date: now.toISOString().substr(0, 10),
+                from: hours+1,
+                to: 20,
+            };
+        })(),
         hasChanged() {
             if (this.callback) {
                 this.callback();
