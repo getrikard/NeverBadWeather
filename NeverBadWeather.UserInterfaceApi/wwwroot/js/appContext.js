@@ -29,7 +29,7 @@
         },
         update() {
             const page = appContext.model.page;
-            const updateFunction = this.updateFunctions[page];
+            const updateFunction = appContext.view.updateFunctions[page];
             updateFunction();
         }
     }

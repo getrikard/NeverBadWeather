@@ -1,10 +1,26 @@
-﻿appContext.view.add('main', function() {
+﻿appContext.view.add('main', function () {
+    const time = appContext.model.time;
     document.getElementById('app').innerHTML = `
+        <small><a href="javascript:goTo('rules')">Rediger klesinnstillingene</a></small>
+
+        <hr/>
+
         <h3>Aldri dårlig vær!</h3>
 
         Hvilken dag vil du ha klesråd for? <br/>
-        <input type="date" oninput="appContext.model.date = this.value"/><br/>
-        Hvilken tidsperiode 
+        <input type="date" oninput="appContext.model.date = this.value" value="${time.date}"/><br/>
+        Hvilken tidsperiode?<br/>
+        Fra
 
+        <span class="timeStepUpDown" onclick="changeTime('from',-1)">▼</span
+        ><span class="timeStepUpDown">${time.from}</span
+        ><span class="timeStepUpDown" onclick="changeTime('from',+1)">▲</span>
+        til
+        <span class="timeStepUpDown" onclick="changeTime('to',-1)">▼</span
+        ><span class="timeStepUpDown">${time.to}</span
+        ><span class="timeStepUpDown" onclick="changeTime('to',+1)">▲</span>
+        <br/>
+
+        <button>Få klesanbefaling!</button>
     `;
 });
