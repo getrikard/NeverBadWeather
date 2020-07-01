@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using NeverBadWeather.DomainModel;
 
 namespace NeverBadWeather.DomainServices
 {
     public interface IClothingRuleRepository
     {
-        IEnumerable<ClothingRule> GetRules(User user);
+        Task<IEnumerable<ClothingRule>> GetRulesByUser(Guid userId);
     }
 }

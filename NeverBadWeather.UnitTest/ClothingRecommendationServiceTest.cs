@@ -30,7 +30,7 @@ namespace NeverBadWeather.UnitTest
             //// arrange
             //var mockWeatherForecast = new Mock<IWeatherForecastService>();
             //var mockClothingRule = new Mock<IClothingRuleRepository>();
-            //mockClothingRule.Setup(m=>m.GetRules(It.IsAny<User>()))
+            //mockClothingRule.Setup(m=>m.GetRulesByUser(It.IsAny<User>()))
             //    .Returns(
             //        new []
             //        {

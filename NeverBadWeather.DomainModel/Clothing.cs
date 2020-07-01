@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeverBadWeather.DomainModel
 {
-    public class Clothing
+    public class Clothing : BaseEntity
     {
         public string Description {get; }
 
