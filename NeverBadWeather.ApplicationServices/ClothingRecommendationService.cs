@@ -20,7 +20,7 @@ namespace NeverBadWeather.ApplicationServices
             _weatherForecastService = weatherForecastService;
         }
 
-        //public Clothing GetClothingRecommendation(User user, Location location)
+        //public Clothes GetClothingRecommendation(User user, Location location)
         //{
         //    var rules = _clothingRuleRepository.GetRulesByUser(user);
         //    if (rules == null || !rules.Any()) return null;
@@ -30,10 +30,10 @@ namespace NeverBadWeather.ApplicationServices
         //    {
         //        if(rule.Match(weatherForecast.Temperature))
         //        {
-        //            return rule.Clothing;
+        //            return rule.Clothes;
         //        }
         //    }
-        //    return rules.First().Clothing;
+        //    return rules.First().Clothes;
         //}
     }
 }

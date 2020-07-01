@@ -37,7 +37,7 @@ namespace NeverBadWeather.UnitTest
             //            new ClothingRule(
             //                10, 
             //                20, 
-            //                new Clothing("Shorts og t-skjorte")),
+            //                new Clothes("Shorts og t-skjorte")),
             //        });
             //mockWeatherForecast.Setup(m => m.GetPlace(It.IsAny<Location>()))
             //    .Returns(new Place());
