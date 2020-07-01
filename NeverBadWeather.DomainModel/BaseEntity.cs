@@ -8,13 +8,9 @@ namespace NeverBadWeather.DomainModel
     {
         public Guid Id { get; }
 
-        public BaseEntity() : this(Guid.NewGuid())
+        public BaseEntity(Guid? id = null)
         {
-        }
-
-        public BaseEntity(Guid id)
-        {
-            Id = id;
+            Id = id ?? Guid.NewGuid();
         }
     }
 }

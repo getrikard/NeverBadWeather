@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace NeverBadWeather.DomainModel
@@ -18,14 +19,11 @@ namespace NeverBadWeather.DomainModel
         }
 
         public ClothingRule(int fromTemperature, int toTemperature, bool isRaining, string clothing)
+        : this(null, fromTemperature, toTemperature, isRaining, clothing)
         {
-            FromTemperature = fromTemperature;
-            ToTemperature = toTemperature;
-            IsRaining = isRaining;
-            Clothing = clothing;
         }
 
-        public ClothingRule(Guid id, int fromTemperature, int toTemperature, bool isRaining, string clothing)
+        public ClothingRule(Guid? id, int fromTemperature, int toTemperature, bool isRaining, string clothing)
             : base(id)
         {
             FromTemperature = fromTemperature;
