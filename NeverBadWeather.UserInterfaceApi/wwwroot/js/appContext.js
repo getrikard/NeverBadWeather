@@ -6,10 +6,30 @@
 
     appContext.model = {
         page: 'main',
-        time: {
-            date: now.toISOString().substr(0, 10),
-            from: hours + 1,
-            to: 20,
+        inputs: {
+            weatherRecommendation: {
+                time: {
+                    date: now.toISOString().substr(0, 10),
+                    from: hours + 1,
+                    to: 20,
+                },
+            },
+            ruleEdit: {
+                temperature: {
+                    from: 10,
+                    to: 20,
+                },
+                time: {
+                    from: 10,
+                    to: 20,
+                },
+                weatherType: null,
+                weatherTypes: [
+                    {value: 'both', description: 'både regn og oppholdsvær'},
+                    {value: 'rain', description: 'regn'},
+                    {value: 'noRain', description: 'oppholdsvær'},
+                ],
+            },
         },
         hasChanged() {
             if (this.callback) {
@@ -37,7 +57,6 @@
     appContext.model.subscribe(appContext.view.update);
 
     const result = await axios.get('/api/clothingRule');
-    console.log(result.data);
     appContext.model.rules = result.data;
 
 })();

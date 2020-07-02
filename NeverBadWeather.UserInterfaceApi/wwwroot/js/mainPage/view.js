@@ -1,5 +1,5 @@
 ﻿appContext.view.add('main', function () {
-    const time = appContext.model.time;
+    const time = appContext.model.inputs.weatherRecommendation.time;
     document.getElementById('app').innerHTML = `
         <small><a href="javascript:goTo('rules')">Rediger klesinnstillingene</a></small>
 
@@ -10,14 +10,13 @@
         Hvilken dag vil du ha klesråd for? <br/>
         <input type="date" oninput="appContext.model.date = this.value" value="${time.date}"/><br/>
         Hvilken tidsperiode?<br/>
-        Fra
-
+        Fra  
         <span class="timeStepUpDown" onclick="changeTime('from',-1)">▼</span
-        ><span class="timeStepUpDown">${time.from}</span
+        ><span class="timeStepUpDown">kl. ${time.from}</span
         ><span class="timeStepUpDown" onclick="changeTime('from',+1)">▲</span>
-        til
+        til 
         <span class="timeStepUpDown" onclick="changeTime('to',-1)">▼</span
-        ><span class="timeStepUpDown">${time.to}</span
+        ><span class="timeStepUpDown">kl. ${time.to}</span
         ><span class="timeStepUpDown" onclick="changeTime('to',+1)">▲</span>
         <br/>
 

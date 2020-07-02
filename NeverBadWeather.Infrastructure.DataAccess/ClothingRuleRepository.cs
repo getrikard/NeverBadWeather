@@ -34,7 +34,7 @@ namespace NeverBadWeather.Infrastructure.DataAccess
                       ,[UserId]
                   FROM [dbo].[ClothingRule]
                   WHERE Id = @Id
-            ";
+                ";
                 var rules = await connection.QueryAsync<DbClothingRule>(select, new { Id = userId });
                 return rules.Select(DomainModelFromDbModel);
             }
