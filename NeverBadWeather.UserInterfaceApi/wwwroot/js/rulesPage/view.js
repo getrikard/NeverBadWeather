@@ -4,6 +4,7 @@
     const temperature = ruleEdit.temperature;
     const weatherType = ruleEdit.weatherType || 'both';
     const weatherTypes = ruleEdit.weatherTypes;
+    const updateText = ruleEdit.obj === null ? 'Legg til ny regel' : 'Oppdater regel';
     document.getElementById('app').innerHTML = `
         <small><a href="javascript:goTo('main')">Få klesanbefaling!</a></small>
 
@@ -33,6 +34,8 @@
                 <option ${wt.value === weatherType ? 'selected' : ''} value="${wt.value}">${wt.description}</option>
             `).join('')}
         </select>
+        <br/>
+        <button onclick="updateRule()">${updateText}</button>        
         <br/>
     `;
 });

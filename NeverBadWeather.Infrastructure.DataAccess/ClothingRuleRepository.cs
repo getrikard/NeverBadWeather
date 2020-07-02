@@ -112,11 +112,11 @@ namespace NeverBadWeather.Infrastructure.DataAccess
         private DomainClothingRule DomainModelFromDbModel(DbClothingRule rule)
         {
             return new DomainClothingRule(
-                rule.Id,
                 rule.FromTemperature,
                 rule.ToTemperature,
                 rule.IsRaining,
-                rule.Clothes
+                rule.Clothes,
+                rule.Id
             );
         }
     }

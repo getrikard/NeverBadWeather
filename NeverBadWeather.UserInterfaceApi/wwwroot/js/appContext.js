@@ -29,6 +29,7 @@
                     {value: 'rain', description: 'regn'},
                     {value: 'noRain', description: 'oppholdsvær'},
                 ],
+                obj: null,
             },
         },
         hasChanged() {

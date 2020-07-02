@@ -18,12 +18,7 @@ namespace NeverBadWeather.DomainModel
                    && temperature > ToTemperature;
         }
 
-        public ClothingRule(int fromTemperature, int toTemperature, bool isRaining, string clothing)
-        : this(null, fromTemperature, toTemperature, isRaining, clothing)
-        {
-        }
-
-        public ClothingRule(Guid? id, int fromTemperature, int toTemperature, bool isRaining, string clothes)
+        public ClothingRule(int fromTemperature, int toTemperature, bool isRaining, string clothes, Guid? id = null)
             : base(id)
         {
             FromTemperature = fromTemperature;

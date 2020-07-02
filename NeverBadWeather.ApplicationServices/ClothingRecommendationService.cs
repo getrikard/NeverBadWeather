@@ -41,5 +41,9 @@ namespace NeverBadWeather.ApplicationServices
         //    }
         //    return rules.First().Clothes;
         //}
+        public async Task<bool> CreateOrUpdateRule(ClothingRule ruleDomain)
+        {
+            return true;
+        }
     }
 }
