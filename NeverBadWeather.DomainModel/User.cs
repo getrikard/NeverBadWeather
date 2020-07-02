@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeverBadWeather.DomainModel
 {
-    public class User
+    public class User : BaseEntity
     {
     }
 }

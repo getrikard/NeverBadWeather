@@ -19,7 +19,7 @@ namespace NeverBadWeather.Infrastructure.DataAccess
         {
             _configuration = configuration;
         }
-        public async Task<IEnumerable<DomainClothingRule>> GetRulesByUser(Guid userId)
+        public async Task<IEnumerable<DomainClothingRule>> GetRulesByUser(Guid? userId)
         {
             await using var connection = new SqlConnection(_configuration.ConnectionString);
             const string select = @"

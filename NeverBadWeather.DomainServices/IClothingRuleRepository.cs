@@ -8,7 +8,7 @@ namespace NeverBadWeather.DomainServices
 {
     public interface IClothingRuleRepository
     {
-        Task<IEnumerable<ClothingRule>> GetRulesByUser(Guid userId);
+        Task<IEnumerable<ClothingRule>> GetRulesByUser(Guid? userId);
         Task<int> Create(ClothingRule rule);
         Task<int> Update(ClothingRule rule);
         Task<int> Delete(ClothingRule rule);

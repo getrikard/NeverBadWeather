@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using NeverBadWeather.DomainModel;
 using NeverBadWeather.DomainServices;
 
@@ -9,8 +10,8 @@ namespace NeverBadWeather.ApplicationServices
 {
     public class ClothingRecommendationService
     {
-        private IWeatherForecastService _weatherForecastService;
-        private IClothingRuleRepository _clothingRuleRepository;
+        private readonly IWeatherForecastService _weatherForecastService;
+        private readonly IClothingRuleRepository _clothingRuleRepository;
 
         public ClothingRecommendationService(
             IWeatherForecastService weatherForecastService,
@@ -18,6 +19,11 @@ namespace NeverBadWeather.ApplicationServices
         {
             _clothingRuleRepository = clothingRuleRepository;
             _weatherForecastService = weatherForecastService;
+        }
+
+        public async Task<IEnumerable<ClothingRule>> GetRules(User user)
+        {
+            return await _clothingRuleRepository.GetRulesByUser(user?.Id);
         }
 
         //public Clothes GetClothingRecommendation(User user, Location location)

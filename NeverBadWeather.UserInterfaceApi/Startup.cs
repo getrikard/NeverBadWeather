@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NeverBadWeather.ApplicationServices;
 using NeverBadWeather.DomainServices;
+using NeverBadWeather.Infrastructure.DataAccess;
 using NeverBadWeather.UserInterfaceApi.Model;
 
 namespace NeverBadWeather.UserInterfaceApi
@@ -31,6 +33,8 @@ namespace NeverBadWeather.UserInterfaceApi
             var connectionString = Configuration.GetConnectionString("NeverBadWeatherDb");
             var appConfiguration = new AppConfiguration(connectionString);
             services.AddSingleton<IAppConfiguration>(appConfiguration);
+            services.AddScoped<IClothingRuleRepository, ClothingRuleRepository>();
+            services.AddScoped<ClothingRecommendationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
