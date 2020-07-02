@@ -37,6 +37,7 @@
     appContext.model.subscribe(appContext.view.update);
 
     const result = await axios.get('/api/clothingRule');
+    console.log(result.data);
     appContext.model.rules = result.data;
 
 })();

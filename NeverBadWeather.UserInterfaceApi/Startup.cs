@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using NeverBadWeather.ApplicationServices;
 using NeverBadWeather.DomainServices;
 using NeverBadWeather.Infrastructure.DataAccess;
+using NeverBadWeather.Infrastructure.WeatherForecastService;
 using NeverBadWeather.UserInterfaceApi.Model;
 
 namespace NeverBadWeather.UserInterfaceApi
@@ -34,6 +35,7 @@ namespace NeverBadWeather.UserInterfaceApi
             var appConfiguration = new AppConfiguration(connectionString);
             services.AddSingleton<IAppConfiguration>(appConfiguration);
             services.AddScoped<IClothingRuleRepository, ClothingRuleRepository>();
+            services.AddScoped<IWeatherForecastService, WeatherForecastServiceYr>();
             services.AddScoped<ClothingRecommendationService>();
         }
 
@@ -46,7 +48,7 @@ namespace NeverBadWeather.UserInterfaceApi
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseFileServer();
 
             app.UseRouting();
 

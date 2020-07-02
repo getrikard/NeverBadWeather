@@ -8,6 +8,8 @@ using NeverBadWeather.UserInterfaceApi.Model;
 
 namespace NeverBadWeather.UserInterfaceApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ClothingRuleController : Controller
     {
         private readonly ClothingRecommendationService _service;

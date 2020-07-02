@@ -21,8 +21,11 @@ namespace NeverBadWeather.Infrastructure.DataAccess
         }
         public async Task<IEnumerable<DomainClothingRule>> GetRulesByUser(Guid? userId)
         {
-            await using var connection = new SqlConnection(_configuration.ConnectionString);
-            const string select = @"
+            try
+            {
+                var connectionString = _configuration.ConnectionString;
+                var connection = new SqlConnection(connectionString);
+                const string select = @"
                 SELECT [Id]
                       ,[IsRaining]
                       ,[FromTemperature]
@@ -32,8 +35,14 @@ namespace NeverBadWeather.Infrastructure.DataAccess
                   FROM [dbo].[ClothingRule]
                   WHERE Id = @Id
             ";
-            var rules = await connection.QueryAsync<DbClothingRule>(select, new {Id = userId});
-            return rules.Select(DomainModelFromDbModel);
+                var rules = await connection.QueryAsync<DbClothingRule>(select, new { Id = userId });
+                return rules.Select(DomainModelFromDbModel);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public async Task<int> Create(DomainClothingRule rule)
