@@ -1,15 +1,16 @@
-﻿const appContext = {
-    model: {
+﻿const appContext = {};
+
+(async function () {
+    const now = new Date();
+    const hours = now.getHours();
+
+    appContext.model = {
         page: 'main',
-        time: (function() {
-            const now = new Date();
-            const hours = now.getHours();
-            return {
-                date: now.toISOString().substr(0, 10),
-                from: hours+1,
-                to: 20,
-            };
-        })(),
+        time: {
+            date: now.toISOString().substr(0, 10),
+            from: hours + 1,
+            to: 20,
+        },
         hasChanged() {
             if (this.callback) {
                 this.callback();
@@ -18,8 +19,8 @@
         subscribe(callback) {
             this.callback = callback;
         }
-    },
-    view: {
+    };
+    appContext.view = {
         updateFunctions: {},
         add(pageName, updateFunction) {
             this.updateFunctions[pageName] = updateFunction;
@@ -32,6 +33,11 @@
             const updateFunction = appContext.view.updateFunctions[page];
             updateFunction();
         }
-    }
-};
-appContext.model.subscribe(appContext.view.update);
+    };
+    appContext.model.subscribe(appContext.view.update);
+
+    const result = await axios.get('/api/clothingRule');
+    appContext.model.rules = result.data;
+
+})();
+

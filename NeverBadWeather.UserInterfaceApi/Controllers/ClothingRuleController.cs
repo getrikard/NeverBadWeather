@@ -18,11 +18,23 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ClothingRecommendation>> GetAll()
+        public async Task<ActionResult<IEnumerable<ClothingRule>>> GetAll()
         {
-            var rules = await _service.GetRules(null);
-            return rules.Select()
+            var rulesDomain = await _service.GetRules(null);
+            var rulesViewModel = rulesDomain.Select(ViewModelFromDomainModel);
+            return Ok(rulesViewModel);
+        }
 
+        private ClothingRule ViewModelFromDomainModel(DomainModel.ClothingRule rule)
+        {
+            return new ClothingRule
+            {
+                Id = rule.Id,
+                IsRaining = rule.IsRaining,
+                Clothes = rule.Clothes,
+                ToTemperature = rule.ToTemperature,
+                FromTemperature = rule.FromTemperature
+            };
         }
     }
 }
