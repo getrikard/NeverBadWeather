@@ -20,11 +20,11 @@
                     to: 20,
                 },
                 weatherType: null,
-                weatherTypes: [
-                    {value: 'both', description: 'både regn og oppholdsvær'},
-                    {value: 'rain', description: 'regn'},
-                    {value: 'noRain', description: 'oppholdsvær'},
-                ],
+                weatherTypes: {
+                    both: 'både regn og oppholdsvær',
+                    rain: 'regn',
+                    noRain: 'oppholdsvær',
+                },
                 clothes: null,
             },
         },

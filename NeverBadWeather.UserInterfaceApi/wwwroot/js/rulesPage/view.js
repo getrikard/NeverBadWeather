@@ -11,15 +11,15 @@
 
         <table>
             <tr>
-                <th>Fra-temperatur</th>
-                <th>Til-temperatur</th>
+                <th>Fra</th>
+                <th>Til</th>
                 <th>Værtype</th>
                 <th>Klær</th>
             </tr>
             ${appContext.model.rules.map(rule => `
             <tr>
-                <td>${rule.fromTemperature}</td>
-                <td>${rule.toTemperature}</td>
+                <td>${rule.fromTemperature}°C</td>
+                <td>${rule.toTemperature}°C</td>
                 <td>${weatherTypeText(rule.isRaining)}</td>
             </tr>
             `).join('')}
@@ -35,7 +35,7 @@
         ><span class="timeStepUpDown" onclick="changeTemperature('to',+1)">▲</span>
         for
         <select onchange="appContext.model.inputs.ruleEdit.weatherType=this.value">
-            ${weatherTypes.map(wt => `
+            ${Array.from(Object.keys(weatherTypes)).map(wt => `
                 <option ${wt.value === weatherType ? 'selected' : ''} value="${wt.value}">${wt.description}</option>
             `).join('')}
         </select>
@@ -48,8 +48,15 @@
     `;
 });
 
-function weatherTypeText(weatherType) {
-    const key = weatherType === null ? 'both' : weatherType;
+
+function weatherTypeText(isRaining) {
+    const key = isRaining === null ? 'both' : isRaining ? 'rain' : 'noRain';
     const weatherTypes = appContext.model.inputs.ruleEdit.weatherTypes;
     return weatherTypes[key];
 }
+
+//function weatherTypeText(weatherType) {
+//    const key = weatherType === null ? 'both' : weatherType;
+//    const weatherTypes = appContext.model.inputs.ruleEdit.weatherTypes;
+//    return weatherTypes[key];
+//}
