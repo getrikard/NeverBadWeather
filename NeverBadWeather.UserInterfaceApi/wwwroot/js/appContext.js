@@ -51,10 +51,18 @@
             updateFunction();
         }
     };
+    appContext.api = {
+        async loadRules() {
+            const result = await axios.get('/api/clothingRule');
+            appContext.model.rules = result.data;
+        },
+        async createOrUpdateRule(rule) {
+            const isSuccess = await axios.post('/api/clothingRule', rule);
+            return isSuccess;
+        }
+    }
     appContext.model.subscribe(appContext.view.update);
-
-    const result = await axios.get('/api/clothingRule');
-    appContext.model.rules = result.data;
+    appContext.api.loadRules();
 
 })();
 
