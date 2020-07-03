@@ -25,7 +25,7 @@ namespace NeverBadWeather.Infrastructure.DataAccess
             {
                 var connectionString = _configuration.ConnectionString;
                 var connection = new SqlConnection(connectionString);
-                const string select = @"
+                var select = @"
                 SELECT [Id]
                       ,[IsRaining]
                       ,[FromTemperature]
@@ -33,9 +33,12 @@ namespace NeverBadWeather.Infrastructure.DataAccess
                       ,[Clothes]
                       ,[UserId]
                   FROM [dbo].[ClothingRule]
-                  WHERE Id = @Id
+                  WHERE UserId 
                 ";
-                var rules = await connection.QueryAsync<DbClothingRule>(select, new { Id = userId });
+                if (userId == null) select += "IS NULL";
+                else select += "= @UserId";
+                var argument = new { UserId = userId };
+                var rules = await connection.QueryAsync<DbClothingRule>(select, argument);
                 return rules.Select(DomainModelFromDbModel);
             }
             catch (Exception e)

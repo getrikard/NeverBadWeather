@@ -8,6 +8,22 @@
         <small><a href="javascript:goTo('main')">Få klesanbefaling!</a></small>
         <hr/>
         <h3>Aldri dårlig vær!</h3>
+
+        <table>
+            <tr>
+                <th>Fra-temperatur</th>
+                <th>Til-temperatur</th>
+                <th>Værtype</th>
+                <th>Klær</th>
+            </tr>
+            ${appContext.model.rules.map(rule => `
+            <tr>
+                <td>${rule.fromTemperature}</td>
+                <td>${rule.toTemperature}</td>
+                <td>${weatherTypeText(rule.isRaining)}</td>
+            </tr>
+            `).join('')}
+        </table>
         
         For temperaturer mellom 
         <span class="timeStepUpDown" onclick="changeTemperature('from',-1)">▼</span
@@ -31,3 +47,9 @@
         <br/>
     `;
 });
+
+function weatherTypeText(weatherType) {
+    const key = weatherType === null ? 'both' : weatherType;
+    const weatherTypes = appContext.model.inputs.ruleEdit.weatherTypes;
+    return weatherTypes[key];
+}
