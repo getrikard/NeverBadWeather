@@ -41,9 +41,15 @@ namespace NeverBadWeather.ApplicationServices
         //    }
         //    return rules.First().Clothes;
         //}
-        public async Task<bool> CreateOrUpdateRule(ClothingRule ruleDomain)
+        public async Task<bool> CreateOrUpdateRule(ClothingRule rule)
         {
-            return true;
+            var rowsAffected = await _clothingRuleRepository.Update(rule);
+            if (rowsAffected == 0)
+            {
+                rowsAffected= await _clothingRuleRepository.Create(rule);
+            }
+
+            return rowsAffected == 1;
         }
     }
 }

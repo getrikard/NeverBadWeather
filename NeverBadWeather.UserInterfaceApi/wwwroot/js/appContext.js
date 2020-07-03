@@ -19,10 +19,6 @@
                     from: 10,
                     to: 20,
                 },
-                time: {
-                    from: 10,
-                    to: 20,
-                },
                 weatherType: null,
                 weatherTypes: [
                     {value: 'both', description: 'både regn og oppholdsvær'},
