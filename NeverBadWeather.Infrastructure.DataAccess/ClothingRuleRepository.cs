@@ -54,15 +54,13 @@ namespace NeverBadWeather.Infrastructure.DataAccess
                            ,[IsRaining]
                            ,[FromTemperature]
                            ,[ToTemperature]
-                           ,[Clothes]
-                           ,[UserId])
+                           ,[Clothes])
                      VALUES
                            (@Id
                            ,@IsRaining
                            ,@FromTemperature
                            ,@ToTemperature
-                           ,@Clothes
-                           ,@UserId)
+                           ,@Clothes)
             ";
             var data = DbModelFromDomainModel(rule);
             var rows = await connection.ExecuteAsync(update, data);
@@ -74,8 +72,7 @@ namespace NeverBadWeather.Infrastructure.DataAccess
             await using var connection = new SqlConnection(_configuration.ConnectionString);
             const string update = @"
                 UPDATE [dbo].[ClothingRule]
-                   SET [Id] = @Id
-                      ,[IsRaining] = @IsRaining
+                   SET [IsRaining] = @IsRaining
                       ,[FromTemperature] = @FromTemperature
                       ,[ToTemperature] = @ToTemperature
                       ,[Clothes] = @Clothes

@@ -30,27 +30,35 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
         [HttpPost]
         public async Task<ActionResult<bool>> CreateOrUpdate([FromBody]ClothingRule clothingRule)
         {
-            var ruleDomain = DomainModelFromViewModel(clothingRule);
-            var result = await _service.CreateOrUpdateRule(ruleDomain);
-            return Ok(result);
+            try
+            {
+                var ruleDomain = DomainModelFromViewModel(clothingRule);
+                var result = await _service.CreateOrUpdateRule(ruleDomain);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.ToString());
+            }
         }
 
-        private DomainModel.ClothingRule DomainModelFromViewModel(ClothingRule rule)
+        public DomainModel.ClothingRule DomainModelFromViewModel(ClothingRule rule)
         {
+            var guid = rule.Id == null ? (Guid?)null : new Guid(rule.Id);
             return new DomainModel.ClothingRule(
                 rule.FromTemperature,
                 rule.ToTemperature,
                 rule.IsRaining,
                 rule.Clothes,
-                rule.Id
+                guid
                 );
         }
 
-        private ClothingRule ViewModelFromDomainModel(DomainModel.ClothingRule rule)
+        private static ClothingRule ViewModelFromDomainModel(DomainModel.ClothingRule rule)
         {
             return new ClothingRule
             {
-                Id = rule.Id,
+                Id = rule.Id.ToString(),
                 IsRaining = rule.IsRaining,
                 Clothes = rule.Clothes,
                 ToTemperature = rule.ToTemperature,

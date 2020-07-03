@@ -9,7 +9,7 @@ namespace NeverBadWeather.DomainModel
     {
         public int FromTemperature { get; }
         public int ToTemperature { get; }
-        public bool IsRaining { get; }
+        public bool? IsRaining { get; }
         public string Clothes { get; }
 
         public bool Match(int temperature)
@@ -18,7 +18,7 @@ namespace NeverBadWeather.DomainModel
                    && temperature > ToTemperature;
         }
 
-        public ClothingRule(int fromTemperature, int toTemperature, bool isRaining, string clothes, Guid? id = null)
+        public ClothingRule(int fromTemperature, int toTemperature, bool? isRaining, string clothes, Guid? id = null)
             : base(id)
         {
             FromTemperature = fromTemperature;

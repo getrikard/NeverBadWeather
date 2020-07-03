@@ -6,10 +6,10 @@ namespace NeverBadWeather.Infrastructure.DataAccess.Model
 {
     public class ClothingRule
     {
-        public Guid Id;
-        public bool IsRaining;
-        public int FromTemperature;
-        public int ToTemperature;
-        public string Clothes;
+        public Guid Id { get; set; }
+        public bool? IsRaining { get; set; }
+        public int FromTemperature { get; set; }
+        public int ToTemperature { get; set; }
+        public string Clothes { get; set; }
     }
 }
