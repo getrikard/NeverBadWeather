@@ -20,13 +20,13 @@
                     to: 20,
                 },
                 weatherType: null,
-                weatherTypes: {
-                    both: 'både regn og oppholdsvær',
-                    rain: 'regn',
-                    noRain: 'oppholdsvær',
-                },
                 clothes: null,
             },
+        },
+        weatherTypes: {
+            both: 'både regn og oppholdsvær',
+            rain: 'regn',
+            noRain: 'oppholdsvær',
         },
         hasChanged() {
             if (this.callback) {

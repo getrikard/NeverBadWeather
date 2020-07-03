@@ -12,3 +12,33 @@
     await appContext.api.loadRules();
     appContext.model.hasChanged();
 }
+
+function selectRule(index) {
+    const model = appContext.model;
+    const rule = model.rules[index];
+    const weatherType = weatherTypeKeyFromIsRaining(rule.isRaining);
+    model.inputs.ruleEdit = {
+        id: rule.id,
+        temperature: {
+            from: rule.fromTemperature,
+            to: rule.toTemperature,
+        },
+        weatherType: weatherType,
+        clothes: rule.clothes,
+    };
+    model.hasChanged();
+}
+
+function createRule() {
+    const model = appContext.model;
+    model.inputs.ruleEdit = {
+        id: null,
+        temperature: {
+            from: 10,
+            to: 20,
+        },
+        weatherType: null,
+        clothes: '',
+    };
+    model.hasChanged();
+}
