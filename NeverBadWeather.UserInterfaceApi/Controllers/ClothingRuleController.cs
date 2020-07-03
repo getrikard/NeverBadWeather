@@ -28,7 +28,7 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<bool>> CreateOrUpdate(ClothingRule clothingRule)
+        public async Task<ActionResult<bool>> CreateOrUpdate([FromBody]ClothingRule clothingRule)
         {
             var ruleDomain = DomainModelFromViewModel(clothingRule);
             var result = await _service.CreateOrUpdateRule(ruleDomain);

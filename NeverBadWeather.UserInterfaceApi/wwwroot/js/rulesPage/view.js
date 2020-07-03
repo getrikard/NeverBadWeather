@@ -10,13 +10,13 @@
         <h3>Aldri dårlig vær!</h3>
         
         For temperaturer mellom 
-        <span class="timeStepUpDown" onclick="changeTime('from',-1)">▼</span
+        <span class="timeStepUpDown" onclick="changeTemperature('from',-1)">▼</span
         ><span class="timeStepUpDown">${temperature.from}°C</span
-        ><span class="timeStepUpDown" onclick="changeTime('from',+1)">▲</span>
+        ><span class="timeStepUpDown" onclick="changeTemperature('from',+1)">▲</span>
         og
-        <span class="timeStepUpDown" onclick="changeTime('to',-1)">▼</span
+        <span class="timeStepUpDown" onclick="changeTemperature('to',-1)">▼</span
         ><span class="timeStepUpDown">${temperature.to}°C</span
-        ><span class="timeStepUpDown" onclick="changeTime('to',+1)">▲</span>
+        ><span class="timeStepUpDown" onclick="changeTemperature('to',+1)">▲</span>
         for
         <select onchange="appContext.model.inputs.ruleEdit.weatherType=this.value">
             ${weatherTypes.map(wt => `

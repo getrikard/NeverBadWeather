@@ -1,13 +1,13 @@
 ﻿async function updateRule() {
     const ruleEdit = appContext.model.inputs.ruleEdit;
-    const obj = ruleEdit.obj;
-    const isBoth = obj.weatherType === null || obj.weatherType === 'both';
+    const isBoth = ruleEdit.weatherType === null || ruleEdit.weatherType === 'both';
     const rule = {
-        id: obj.id,
-        isRaining: isBoth ? null : obj.weatherType === 'rain',
-        fromTemperature: obj.temperature.from,
-        toTemperature: obj.temperature.to,
-        clothes: obj.clothes,
+        id: ruleEdit.id || null,
+        isRaining: isBoth ? null : ruleEdit.weatherType === 'rain',
+        fromTemperature: ruleEdit.temperature.from,
+        toTemperature: ruleEdit.temperature.to,
+        clothes: ruleEdit.clothes,
     };
+    console.log(rule);
     const isSuccess = await axios.post('/api/clothingRule', rule);
 }
