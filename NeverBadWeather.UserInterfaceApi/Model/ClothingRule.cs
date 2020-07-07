@@ -8,8 +8,8 @@ namespace NeverBadWeather.UserInterfaceApi.Model
     public class ClothingRule 
     {
         public string Id { get; set; }
-        public int FromTemperature { get; set; }
-        public int ToTemperature { get; set; }
+        public int? FromTemperature { get; set; }
+        public int? ToTemperature { get; set; }
         public bool? IsRaining { get; set; }
         public string Clothes { get; set; }
     }

@@ -24,7 +24,10 @@
                 <td>${rule.toTemperature}°C</td>
                 <td>${weatherTypeText(rule.isRaining)}</td>
                 <td>${rule.clothes}</td>
-                <td><a href="javascript:selectRule(${i})">velg</a>
+                <td>
+                    <a href="javascript:selectRule(${i})">velg</a>
+                    <a href="javascript:deleteRule(${i})">slett</a>
+                </td>
             </tr>
             `).join('')}
         </table>

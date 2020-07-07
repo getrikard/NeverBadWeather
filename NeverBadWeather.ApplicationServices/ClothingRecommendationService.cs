@@ -51,5 +51,11 @@ namespace NeverBadWeather.ApplicationServices
 
             return rowsAffected == 1;
         }
+
+        public async Task<bool> DeleteRule(ClothingRule rule)
+        {
+            var rowsAffected = await _clothingRuleRepository.Delete(rule);
+            return rowsAffected == 1;
+        }
     }
 }

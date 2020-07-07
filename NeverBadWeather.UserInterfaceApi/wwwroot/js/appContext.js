@@ -59,7 +59,18 @@
         async createOrUpdateRule(rule) {
             const isSuccess = await axios.post('/api/clothingRule', rule);
             return isSuccess;
-        }
+        },
+        async deleteRule(rule) {
+            //let data = {
+            //    id: id,
+            //    fromTemperature: 1,
+            //    toTemperature: 2,
+            //    isRaining: true,
+            //    clothes: 'kjkjh',
+            //};
+            const isSuccess = await axios.delete('/api/clothingRule', rule);
+            return isSuccess;
+        },
     }
     appContext.model.subscribe(appContext.view.update);
     appContext.api.loadRules();

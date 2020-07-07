@@ -42,12 +42,27 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
             }
         }
 
+        [HttpDelete]
+        public async Task<ActionResult<bool>> Delete(ClothingRule clothingRule)
+        {
+            try
+            {
+                var ruleDomain = DomainModelFromViewModel(clothingRule);
+                var result = await _service.DeleteRule(ruleDomain);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.ToString());
+            }
+        }
+
         public DomainModel.ClothingRule DomainModelFromViewModel(ClothingRule rule)
         {
             var guid = rule.Id == null ? (Guid?)null : new Guid(rule.Id);
             return new DomainModel.ClothingRule(
-                rule.FromTemperature,
-                rule.ToTemperature,
+                rule.FromTemperature ?? 0,
+                rule.ToTemperature ?? 0,
                 rule.IsRaining,
                 rule.Clothes,
                 guid
