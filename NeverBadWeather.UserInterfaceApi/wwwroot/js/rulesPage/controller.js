@@ -42,3 +42,10 @@ function createRule() {
     };
     model.hasChanged();
 }
+
+function changeTemperature(temperatureField, change) {
+    const model = appContext.model;
+    const temperature = model.inputs.ruleEdit.temperature;
+    temperature[temperatureField] = temperature[temperatureField] + change;
+    model.hasChanged();
+}
