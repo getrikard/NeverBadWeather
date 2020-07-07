@@ -4,7 +4,7 @@
     const temperature = ruleEdit.temperature;
     const weatherType = ruleEdit.weatherType || 'both';
     const weatherTypes = model.weatherTypes;
-    const updateText = ruleEdit.obj === null ? 'Legg til ny regel' : 'Oppdater regel';
+    const updateText = ruleEdit.id === null ? 'Legg til ny regel' : 'Oppdater regel';
     const clothes = ruleEdit.clothes || '';
     document.getElementById('app').innerHTML = `
         <small><a href="javascript:goTo('main')">Få klesanbefaling!</a></small>

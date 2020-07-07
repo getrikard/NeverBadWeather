@@ -15,6 +15,7 @@
                 },
             },
             ruleEdit: {
+                id: null,
                 temperature: {
                     from: 10,
                     to: 20,
