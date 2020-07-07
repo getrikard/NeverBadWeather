@@ -61,14 +61,7 @@
             return isSuccess;
         },
         async deleteRule(rule) {
-            //let data = {
-            //    id: id,
-            //    fromTemperature: 1,
-            //    toTemperature: 2,
-            //    isRaining: true,
-            //    clothes: 'kjkjh',
-            //};
-            const isSuccess = await axios.delete('/api/clothingRule', rule);
+            const isSuccess = await axios.put('/api/clothingRule', rule);
             return isSuccess;
         },
     }

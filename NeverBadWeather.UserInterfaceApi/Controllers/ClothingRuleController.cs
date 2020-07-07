@@ -42,7 +42,7 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPut]
         public async Task<ActionResult<bool>> Delete(ClothingRule clothingRule)
         {
             try
