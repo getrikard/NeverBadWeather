@@ -5,7 +5,7 @@ namespace NeverBadWeather.DomainModel.UnitTest
     public class LocationTest
     {
         [Test]
-        public void Test1()
+        public void TestIsWithinInside()
         {
             // arrange
             var corner1 = new Location(0, 0);
