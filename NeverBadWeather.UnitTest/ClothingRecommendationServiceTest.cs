@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using NeverBadWeather.ApplicationServices;
@@ -50,6 +51,10 @@ namespace NeverBadWeather.UnitTest
             var recommendation = await service.GetClothingRecommendation(request);
 
             // assert
+            Assert.AreEqual("Andeby",recommendation.Place.Name);
+            Assert.That(recommendation.Rules, Has.Exactly(1).Items);
+            var rule = recommendation.Rules.First();
+            Assert.AreEqual("T-skjore og shorts", rule.Clothes);
         }
     }
 }
