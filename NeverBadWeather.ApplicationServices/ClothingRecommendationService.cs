@@ -26,7 +26,7 @@ namespace NeverBadWeather.ApplicationServices
             return await _clothingRuleRepository.GetRulesByUser(user?.Id);
         }
 
-        public async Task<IEnumerable<ClothingRule>> GetClothingRecommendation(ClothingRecommendationRequest request)
+        public async Task<ClothingRecommendation> GetClothingRecommendation(ClothingRecommendationRequest request)
         {
             var rules = await _clothingRuleRepository.GetRulesByUser(request.User?.Id);
             if (rules == null) return null;
@@ -39,7 +39,10 @@ namespace NeverBadWeather.ApplicationServices
             var place = placeList.GetClosestPlace(request.Location);
             var weatherForecast = await _weatherForecastService.GetWeatherForecast(place);
             var stats = weatherForecast.GetStats(request.Time.From, request.Time.To);
-            return rules.Where(rule => rule.Match(stats));
+            return new ClothingRecommendation(
+                rules.Where(rule => rule.Match(stats)),
+                weatherForecast, 
+                place);
         }
 
         public async Task<bool> CreateOrUpdateRule(ClothingRule rule)

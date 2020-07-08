@@ -24,9 +24,9 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
         public async Task<ActionResult<IEnumerable<ClothingRule>>> Get(ClothingRecommendationRequest request)
         {
             var clothingRecommendationRequest = request.ToDomainModel();
-            var relevantRules = await _service.GetClothingRecommendation(clothingRecommendationRequest);
-            var rulesViewModel = relevantRules.Select(ClothingRule.GetAsViewModel);
-            return Ok(rulesViewModel);
+            var recommendation = await _service.GetClothingRecommendation(clothingRecommendationRequest);
+            var viewModel = new ClothingRecommendation(recommendation);
+            return Ok(viewModel);
         }
     }
 }

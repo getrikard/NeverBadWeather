@@ -23,7 +23,6 @@ namespace NeverBadWeather.DomainModel
 
         public Place()
         {
-            
         }
 
         public override string ToString()
