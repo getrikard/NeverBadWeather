@@ -28,11 +28,14 @@
 });
 
 function getRecommendationHtml() {
-    const rules = appContext.model.recommendation;
-    if (rules === null) return'';
+    const recommendation = appContext.model.recommendation;
+    if (recommendation === null) return '';
+    const rules = recommendation.rules;
+    const place = recommendation.place;
+    const weatherForecast = recommendation.weatherForecast;
 
     return `
-
+        <h4>Klesanbefaling for ${place}</h4>
         <table>
             <tr>
                 <th>Fra</th>
@@ -46,13 +49,15 @@ function getRecommendationHtml() {
                 <td>${rule.toTemperature}°C</td>
                 <td>${weatherTypeText(rule.isRaining)}</td>
                 <td>${rule.clothes}</td>
-                <td>
-                    <a href="javascript:selectRule(${i})">velg</a>
-                    <a href="javascript:deleteRule(${i})">slett</a>
-                </td>
             </tr>
             `).join('')}
         </table>
+        Dette er basert på følgende værmelding: 
+        <ul>
+            ${weatherForecast.map(f => `
+                <li>${f}</li>
+            `).join('')}
+        </ul>
 
     `;
 }
