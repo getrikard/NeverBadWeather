@@ -20,5 +20,13 @@ namespace NeverBadWeather.UserInterfaceApi.Controllers
             _service = service;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<ClothingRule>>> Get(ClothingRecommendationRequest request)
+        {
+            var clothingRecommendationRequest = request.ToDomainModel();
+            var relevantRules = await _service.GetClothingRecommendation(clothingRecommendationRequest);
+            var rulesViewModel = relevantRules.Select(ClothingRule.GetAsViewModel);
+            return Ok(rulesViewModel);
+        }
     }
 }

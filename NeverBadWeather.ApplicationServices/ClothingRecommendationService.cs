@@ -26,27 +26,28 @@ namespace NeverBadWeather.ApplicationServices
             return await _clothingRuleRepository.GetRulesByUser(user?.Id);
         }
 
-        //public Clothes GetClothingRecommendation(User user, Location location)
-        //{
-        //    var rules = _clothingRuleRepository.GetRulesByUser(user);
-        //    if (rules == null || !rules.Any()) return null;
-        //    var place = _weatherForecastService.GetPlace(location);
-        //    var weatherForecast = _weatherForecastService.GetWeatherForecast(place);
-        //    foreach (var rule in rules)
-        //    {
-        //        if(rule.Match(weatherForecast.Temperature))
-        //        {
-        //            return rule.Clothes;
-        //        }
-        //    }
-        //    return rules.First().Clothes;
-        //}
+        public async Task<IEnumerable<ClothingRule>> GetClothingRecommendation(ClothingRecommendationRequest request)
+        {
+            var rules = await _clothingRuleRepository.GetRulesByUser(request.User?.Id);
+            if (rules == null) return null;
+            var placeList = PlaceList.Instance;
+            if (!placeList.IsLoaded)
+            {
+                var places = _weatherForecastService.GetAllPlaces();
+                placeList.Load(places);
+            }
+            var place = placeList.GetClosestPlace(request.Location);
+            var weatherForecast = await _weatherForecastService.GetWeatherForecast(place);
+            var stats = weatherForecast.GetStats(request.Time.From, request.Time.To);
+            return rules.Where(rule => rule.Match(stats));
+        }
+
         public async Task<bool> CreateOrUpdateRule(ClothingRule rule)
         {
             var rowsAffected = await _clothingRuleRepository.Update(rule);
             if (rowsAffected == 0)
             {
-                rowsAffected= await _clothingRuleRepository.Create(rule);
+                rowsAffected = await _clothingRuleRepository.Create(rule);
             }
 
             return rowsAffected == 1;
