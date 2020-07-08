@@ -21,5 +21,38 @@
         <br/>
 
         <button onclick="getClothingRecommendation()">Få klesanbefaling!</button>
+
+        ${getRecommendationHtml()}
+
     `;
 });
+
+function getRecommendationHtml() {
+    const rules = appContext.model.recommendation;
+    if (rules === null) return'';
+
+    return `
+
+        <table>
+            <tr>
+                <th>Fra</th>
+                <th>Til</th>
+                <th>Værtype</th>
+                <th>Klær</th>
+            </tr>
+            ${rules.map((rule, i) => `
+            <tr>
+                <td>${rule.fromTemperature}°C</td>
+                <td>${rule.toTemperature}°C</td>
+                <td>${weatherTypeText(rule.isRaining)}</td>
+                <td>${rule.clothes}</td>
+                <td>
+                    <a href="javascript:selectRule(${i})">velg</a>
+                    <a href="javascript:deleteRule(${i})">slett</a>
+                </td>
+            </tr>
+            `).join('')}
+        </table>
+
+    `;
+}

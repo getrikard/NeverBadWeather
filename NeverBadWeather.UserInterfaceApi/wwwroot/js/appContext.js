@@ -24,6 +24,7 @@
                 clothes: null,
             },
         },
+        recommendation: null,
         weatherTypes: {
             both: 'både regn og oppholdsvær',
             rain: 'regn',
