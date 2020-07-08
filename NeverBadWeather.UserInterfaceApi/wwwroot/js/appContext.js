@@ -65,6 +65,10 @@
             const isSuccess = await axios.put('/api/clothingRule', rule);
             return isSuccess;
         },
+        async getClothingRecommendation(request) {
+            const response = await axios.post('/api/clothingRecommendation', request);
+            return response.data;
+        },
     }
     appContext.model.subscribe(appContext.view.update);
     appContext.api.loadRules();

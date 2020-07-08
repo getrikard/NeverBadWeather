@@ -20,6 +20,6 @@
         ><span class="timeStepUpDown" onclick="changeTime('to',+1)">▲</span>
         <br/>
 
-        <button>Få klesanbefaling!</button>
+        <button onclick="getClothingRecommendation()">Få klesanbefaling!</button>
     `;
 });
