@@ -68,6 +68,7 @@
     }
     appContext.model.subscribe(appContext.view.update);
     appContext.api.loadRules();
+    navigator.geolocation.getCurrentPosition(function (position) { appContext.model.position=position});
 
 })();
 
