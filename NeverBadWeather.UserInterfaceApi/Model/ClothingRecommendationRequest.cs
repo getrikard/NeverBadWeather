@@ -19,6 +19,8 @@ namespace NeverBadWeather.UserInterfaceApi.Model
             if (HourFrom < timeFrom.Hour) timeFrom = timeFrom.AddDays(1);
             timeFrom = timeFrom.AddHours(HourFrom - timeFrom.Hour);
             timeFrom = timeFrom.AddMinutes(-timeFrom.Minute);
+            timeFrom = timeFrom.AddSeconds(-timeFrom.Second);
+            timeFrom = timeFrom.AddMilliseconds(-timeFrom.Millisecond);
             var timeTo = timeFrom.AddHours(HourTo - timeFrom.Hour);
             if (timeTo < timeFrom) timeTo = timeTo.AddDays(1);
             return new DomainModel.ClothingRecommendationRequest(

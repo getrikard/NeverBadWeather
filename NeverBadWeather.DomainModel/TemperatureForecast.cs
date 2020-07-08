@@ -19,7 +19,7 @@ namespace NeverBadWeather.DomainModel
 
         public override string ToString()
         {
-            return $"{Temperature}°C fra {FromTime:t} til {ToTime:t}";
+            return $"{Temperature}°C fra {FromTime:g} til {ToTime:t}";
         }
     }
 }

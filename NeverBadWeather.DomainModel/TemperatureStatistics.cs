@@ -24,7 +24,7 @@ namespace NeverBadWeather.DomainModel
             get
             {
                 if (_hasNoInput) throw new CannotGiveMinOrMaxWithNoNumbersException();
-                return _min;
+                return _max;
             }
         }
 

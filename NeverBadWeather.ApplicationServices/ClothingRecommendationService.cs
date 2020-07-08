@@ -38,7 +38,8 @@ namespace NeverBadWeather.ApplicationServices
             }
             var place = placeList.GetClosestPlace(request.Location);
             var weatherForecast = await _weatherForecastService.GetWeatherForecast(place);
-            var stats = weatherForecast.GetStats(request.Time.From, request.Time.To);
+            weatherForecast.LimitTo(request.Time.From, request.Time.To);
+            var stats = weatherForecast.GetStats();
             return new ClothingRecommendation(
                 rules.Where(rule => rule.Match(stats)),
                 weatherForecast, 
