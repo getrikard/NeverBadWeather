@@ -8,7 +8,7 @@ Applikasjonen dere skal jobbe med er basert på en idé som Christoffer Hellenes
 
 Terje er tilgjengelig mandag og fredag, men dagene i mellom er tanken at dere jobber selvstendig og individuelt med dette; samtidig som dere hjelper hverandre og deler kunnskapen dere har og får. 
 
-Vurder alltid om oppgaven du ser på gir utbytte for deg. Om den er for lett eller for vanskelig, er det bedre å velge noe annet. Overordnet er ideen å sette seg inn i denne applikasjonen og lære av det. En måte å få til det på er ved å gjøre små endringer. I tillegg til det som er under, kan dere finner på små endringer å gjøre selv - om forslagene under ikke passer.
+Vurder alltid om oppgaven du ser på gir utbytte for deg. Om den er for lett eller for vanskelig, er det bedre å velge noe annet. Overordnet er ideen å sette seg inn i denne applikasjonen og lære av det. En måte å få til det på er ved å gjøre små endringer. I tillegg til det som er under, kan dere finne på små endringer å gjøre selv - om forslagene under ikke passer.
 
 ## Oppgaver
 
