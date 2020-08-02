@@ -10,6 +10,8 @@ Terje er tilgjengelig mandag og fredag, men dagene i mellom er tanken at dere jo
 
 Vurder alltid om oppgaven du ser på gir utbytte for deg. Om den er for lett eller for vanskelig, er det bedre å velge noe annet. Overordnet er ideen å sette seg inn i denne applikasjonen og lære av det. En måte å få til det på er ved å gjøre små endringer. I tillegg til det som er under, kan dere finne på små endringer å gjøre selv - om forslagene under ikke passer.
 
+For de få av dere som er med denne uken men som ikke har fått bedrift ennå, skal dere prioritere annerledes denne uken. Ta en prat med Terje for detaljene.
+
 ## Oppgaver
 
 1. Last ned og test applikasjonen. 
