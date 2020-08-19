@@ -15,7 +15,9 @@ async function getClothingRecommendation() {
         latitude: location.latitude,
         longitude: location.longitude,
     };
+    // console.log(request);
     const recommendation = await appContext.api.getClothingRecommendation(request);
+    console.log(recommendation);
     model.recommendation = recommendation;
     model.hasChanged();
 }

@@ -27,8 +27,9 @@ namespace NeverBadWeather.DomainModel
         public Place GetClosestPlace(Location location)
         {
             if (!IsLoaded) throw new PlaceListNotLoadedException();
-            var min = location.CreateWithDelta(-1, -1);
-            var max = location.CreateWithDelta(1, 1);
+            var deltaValue = 1;
+            var min = location.CreateWithDelta(-deltaValue, -deltaValue);
+            var max = location.CreateWithDelta(deltaValue, deltaValue);
             var minDistance = double.MaxValue;
             Place bestPlace = null;
             foreach (var place in _places)

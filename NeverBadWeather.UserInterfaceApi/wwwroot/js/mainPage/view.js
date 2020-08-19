@@ -8,7 +8,7 @@
         <h3>Aldri dårlig vær!</h3>
 
         Hvilken dag vil du ha klesråd for? <br/>
-        <input type="date" oninput="appContext.model.date = this.value" value="${time.date}"/><br/>
+        <input type="date" oninput="appContext.model.inputs.weatherRecommendation.time.date = this.value" value="${time.date}"/><br/>
         Hvilken tidsperiode?<br/>
         Fra  
         <span class="timeStepUpDown" onclick="changeTime('from',-1)">▼</span
